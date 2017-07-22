@@ -1,10 +1,10 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        bye-flash-hello-html5 | 再见flash 你好html5
 // @namespace   https://greasyfork.org/en/users/131965-levinit
 // @author      levinit
 // @description 某些网站啊，明明有html5视频播放，就是不提供给你用呢，mac就可以是几个意思？对，说的就是你！flash?手动再见!支持优酷-乐视-爱奇艺等
 // @include     *://*le.com/*
-// @include     *://*iqiyi.com/*
+// @include     *://*iqiyi.com/*html*
 // @include     *://*youku.com/*
 // @include     *://*cctv.com/*
 // @include     *://*mgtv.com/*
@@ -39,7 +39,8 @@ function changeUA(ua) {
     var phone = [
       'cctv',
       '.163',
-      'mgtv'
+      'mgtv',
+      'iqiyi'
     ];
     for (var i = 0; i < phone.length; i++) {
       if (siteNow.indexOf(phone[i]) >= 0) {

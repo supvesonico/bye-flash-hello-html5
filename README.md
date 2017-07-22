@@ -14,7 +14,9 @@ bye-flash-hello-html5 | 再见flash 你好html5
 
 - [优酷](http://youku.com)
 
-- [爱奇艺](http://iqiyi.com)-chrome高版本
+- [爱奇艺](http://iqiyi.com)-m
+
+  注意：可以使用高版本chrome播放html5，但是体验**十分差** 。使用移动ua相对好多了，遇到播放失败时刷新一下页面。
 
 - [央视网](http://cctv.com)-m          
 
