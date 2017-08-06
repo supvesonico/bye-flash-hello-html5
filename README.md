@@ -32,6 +32,10 @@ bye-flash-hello-html5 | 再见flash 你好html5
 
 - [乐视视频](http://le.com)-Mac+Safari
 
+- [腾讯视频](https://v.qq.com)-Mac
+
+  非Mac上的HTML播放99.999999%（夸张向）放不动。
+
 
   m表示使用了移动端UA
   Mac、Safari、chrome  表示使用了该设备/浏览器UA

@@ -6,66 +6,62 @@
 // @include     *://*le.com/*
 // @include     *://*iqiyi.com/*html*
 // @include     *://*youku.com/*
+// @include     *://*qq.com/*
 // @include     *://*cctv.com/*
 // @include     *://*mgtv.com/*
 // @include     *://*icourse163.org/*
 // @include     *://*open.163.com/movie*
 // @include     *://*study.163.com/course/*
 // @run-at      document-start
-// @version     1
+// @version     1.4
 // @grant       none
 // ==/UserScript==
 //'use strict';
 var siteNow = location.host; //获取当前的主机名
-var ua = null; //user-agent
+var ua = null; //user-agent取值
 var isPhone = false; //是否使用移动ua
-//更改ua的方法
-function changeUA(ua) {
-  Object.defineProperty(navigator, 'userAgent', {
-    value: ua,
-    writable: false,
-    configurable: false,
-    enumerable: true
-  });
+
+function changeUA(ua) { //更改ua的方法
+    Object.defineProperty(navigator, 'userAgent', {
+        value: ua,
+        writable: false,
+        configurable: false,
+        enumerable: true
+    });
 }
 
-(function () {
-  //如果是这些页面，禁止使用移动ua
-  var http = location.protocol + '//'; //http/https
-  var homeUrl = location.href.replace(http, '');
-  if (homeUrl === 'www.mgtv.com/') {
-    console.log('此页面不使用移动UA');
-  } else {
-    var phone = [
-      'cctv',
-      '.163',
-      'mgtv',
-      'iqiyi'
-    ];
-    for (var i = 0; i < phone.length; i++) {
-      if (siteNow.indexOf(phone[i]) >= 0) {
-        isPhone = true;
-        console.log('将使用Android UA')
-        return;
-      }
+(function () { //判断移动ua相关信息
+    //不会使用移动ua的页面url的正则
+    var urlReg = /(www.mgtv.com\/\w+\/$|www.mgtv.com\/$)/;
+    if (location.href.match(urlReg) !== null) {
+        return null;//能够匹配urlReg的页面，禁止使用移动ua
+    } else {
+    //不满足if中的条件，并且url中包含这些关键字的页面会被使用移动ua
+        var phone = [
+            'cctv',
+            '.163',
+            'mgtv',
+            'iqiyi'
+        ];
+        for (var i = 0; i < phone.length; i++) {
+            if (siteNow.indexOf(phone[i]) >= 0) {
+                isPhone = true;
+            }
+        }
     }
-  }
-}) ();
+})();
 if (siteNow.indexOf('youku') >= 0) { //优酷youku
-  console.log('HTML5播放');
-  (function () {
-    window.sessionStorage.setItem('P_l_h5', true);
-  }) ();
+    (function () {
+        window.sessionStorage.setItem('P_l_h5', true);
+    })();
 } else if (isPhone) { //使用移动ua 默认用android
-  console.log('使用Android的UA进行HTML5播放'); //cctv使用IOS播放会有问题
-  ua = 'Mozilla/5.0 (Linux; U; Android 4.0.4; GT-I9300 Build/IMM76D) AppleWebKit/601.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/601.1.46';
-  changeUA(ua);
+    ua = 'Mozilla/5.0 (Linux; U; Android 4.0.4; GT-I9300 Build/IMM76D) AppleWebKit/601.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/601.1.46';
+    changeUA(ua);
 } else { //使用chrome、mac、safari等ua
-  console.log('使用html5播放');
-  if (siteNow.indexOf('le.com') >= 0) { //le.com乐视网对mac+safari情有独钟
-    ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.7 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.7';
-  } else { //使用mac ua
-    ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.7 (KHTML, like Gecko) Chrome/59.0.3071.109 Safari/601.2.7';
-  }
-  changeUA(ua);
+    if (siteNow.indexOf('le.com') >= 0) { //le.com乐视网对mac+safari情有独钟
+        ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.7 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.7';
+    } else { //使用mac ua
+        ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.7 (KHTML, like Gecko) Chrome/59.0.3071.109 Safari/601.2.7';
+    }
+    changeUA(ua);
 }
