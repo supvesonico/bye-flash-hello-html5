@@ -13,7 +13,7 @@
 // @include     *://*open.163.com/movie*
 // @include     *://*study.163.com/course/*
 // @run-at      document-start
-// @version     1.4
+// @version     1.5
 // @grant       none
 // ==/UserScript==
 //'use strict';
@@ -34,9 +34,9 @@ function changeUA(ua) { //更改ua的方法
     //不会使用移动ua的页面url的正则
     var urlReg = /(www.mgtv.com\/\w+\/$|www.mgtv.com\/$)/;
     if (location.href.match(urlReg) !== null) {
-        return null;//能够匹配urlReg的页面，禁止使用移动ua
+        return null; //能够匹配urlReg的页面，禁止使用移动ua
     } else {
-    //不满足if中的条件，并且url中包含这些关键字的页面会被使用移动ua
+        //不满足if中的条件，并且url中包含这些关键字的页面会被使用移动ua
         var phone = [
             'cctv',
             '.163',
@@ -65,3 +65,9 @@ if (siteNow.indexOf('youku') >= 0) { //优酷youku
     }
     changeUA(ua);
 }
+window.onload = function () {
+    var videoElement = document.querySelector('video');
+    if (location.href.search('study.163') >= 0 && !!videoElement === true) {
+        videoElement.setAttribute('controls', 'controls');//添加播放控制条
+    }
+};
