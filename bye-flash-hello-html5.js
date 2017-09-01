@@ -3,7 +3,7 @@
 // @namespace   https://greasyfork.org/en/users/131965-levinit
 // @author      levinit
 // @description 某些网站啊，明明有html5视频播放，就是不提供给你用呢，mac就可以是几个意思？对，说的就是你！flash?手动再见!支持优酷-乐视-爱奇艺等
-// @include     *://*le.com/*
+// @include     *://*.le.com/*
 // @include     *://*iqiyi.com/*html*
 // @include     *://*youku.com/*
 // @include     *://*qq.com/*
@@ -13,7 +13,7 @@
 // @include     *://*open.163.com/movie*
 // @include     *://*study.163.com/course/*
 // @run-at      document-start
-// @version     1.6
+// @version     1.6.1
 // @grant       none
 // ==/UserScript==
 //'use strict';
