@@ -1,6 +1,6 @@
 bye-flash-hello-html5 | 再见flash 你好html5
 
-  ---
+---
 
 # 介绍
 
@@ -12,11 +12,15 @@ bye-flash-hello-html5 | 再见flash 你好html5
 
 ## 支持网站
 
-- [优酷](http://youku.com)
+- ~~[优酷](http://youku.com)~~
+
+  最近优酷吧html5关掉了（？）……观望中。用个ipad上网页看也得让你安个客户端，不然只让看几分钟……
+
+  Linux用户可安装[moonplayer](https://github.com/coslyk/moonplayer/wiki/HomePageZH)（此软件也有OSX/Windows版本，不过OSX/Windows用户有官方客户端加持吧？[moonplyer插件](https://github.com/coslyk/moonplayer-plugins)）。也可以使用[you-get](https://github.com/soimort/you-get)配合播放器（如[mpv](https://github.com/mpv-player/mpv)）播放：`you-get -p mpv [url]`
 
 - [爱奇艺](http://iqiyi.com)-m
 
-  注意：可以使用高版本chrome播放html5，但是体验**十分差** 。使用移动ua相对好多了，遇到播放失败时刷新一下页面。
+  注意：可以使用高版本chrome播放html5，但是体验**十分差** ，经常失败。使用移动ua播放无压力，还可切换清晰度。
 
 - [央视网](http://cctv.com)-m          
 
@@ -32,10 +36,7 @@ bye-flash-hello-html5 | 再见flash 你好html5
 
 - [乐视视频](http://le.com)-Mac+Safari
 
-- [腾讯视频](https://v.qq.com)-Mac
-
-  非Mac上的HTML播放99.999999%（夸张向）放不动。
-
+- ~~[腾讯视频](https://v.qq.com)-Mac~~    自带html5播放无压力 去掉
 
   m表示使用了移动端UA
   Mac、Safari、chrome  表示使用了该设备/浏览器UA
@@ -89,4 +90,3 @@ IOS：怎么会……
 什么？用flash?试看如今的网络，已是html5的世界，flash什么的很烦啊……
 
 再说了，用flash，电脑要！爆！炸！好！吗！
-

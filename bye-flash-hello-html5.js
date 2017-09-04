@@ -6,19 +6,21 @@
 // @include     *://*.le.com/*
 // @include     *://*iqiyi.com/*html*
 // @include     *://*youku.com/*
-// @include     *://*qq.com/*
 // @include     *://*cctv.com/*
 // @include     *://*mgtv.com/*
 // @include     *://*icourse163.org/*
 // @include     *://*open.163.com/movie*
 // @include     *://*study.163.com/course/*
 // @run-at      document-start
-// @version     1.6.1
+// @version     1.6.2
 // @grant       none
 // ==/UserScript==
 //'use strict';
 var ua = null; //user-agent取值
 var isPhone = false; //是否使用移动ua
+var ele = function (element) {
+    return document.querySelector(element);
+};
 var changeUA = function (ua) { //更改ua的方法
     Object.defineProperty(navigator, 'userAgent', {
         value: ua,
@@ -48,9 +50,11 @@ var changeUA = function (ua) { //更改ua的方法
     }
 })();
 if (location.host.indexOf('youku') >= 0) { //优酷youku
-    (function () {
-        window.sessionStorage.setItem('P_l_h5', true);
-    })();
+    //   (function () {
+    //     window.sessionStorage.setItem('P_l_h5', true);
+    //   }) ();
+    ua = 'iPad';
+    changeUA(ua);
 } else if (isPhone) { //isPhone为true时 使用移动ua 默认用android
     ua = 'Mozilla/5.0 (Linux; U; Android 4.0.4; GT-I9300 Build/IMM76D) AppleWebKit/601.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/601.1.46';
     changeUA(ua);
@@ -74,18 +78,15 @@ window.onload = function () {
         }
     }
     function iqiyi() {
-        var ele = function (element) {
-            return document.querySelector(element);
-        };
         var dom = {
             defaultProcess: ele('.process-response'), //爱奇艺默认的进度条
             control2: ele('.bottom') //播放下一个视频和调整画质的控制条
         };
-        if (!!dom.defaultProcess === true) { //爱奇艺默认的进度条很烦人
-            dom.defaultProcess.style.display = 'none'; //消失吧 进度条
-        }
         if (!!dom.control2 === true) { //播放下一个视频和调整画质的控制条往上放
             dom.control2.style.bottom = '25px'; //别被video的controls遮住了
+            if (!!dom.defaultProcess === true) { //爱奇艺默认的进度条很烦人
+                dom.defaultProcess.style.display = 'none'; //消失吧 进度条
+            }
         }
     }
 };
