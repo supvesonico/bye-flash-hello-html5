@@ -8,6 +8,7 @@
 // @include     *://*youku.com/*
 // @include     *://*cctv.com/*
 // @include     *://*mgtv.com/*
+// @include     *://v.qq.com/*
 // @include     *://*icourse163.org/*
 // @include     *://*open.163.com/movie*
 // @include     *://*study.163.com/course/*
@@ -50,11 +51,9 @@ var changeUA = function (ua) { //更改ua的方法
     }
 })();
 if (location.host.indexOf('youku') >= 0) { //优酷youku
-    //   (function () {
-    //     window.sessionStorage.setItem('P_l_h5', true);
-    //   }) ();
-    ua = 'iPad';
-    changeUA(ua);
+    (function () {
+        window.sessionStorage.setItem('P_l_h5', true);
+    })();
 } else if (isPhone) { //isPhone为true时 使用移动ua 默认用android
     ua = 'Mozilla/5.0 (Linux; U; Android 4.0.4; GT-I9300 Build/IMM76D) AppleWebKit/601.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/601.1.46';
     changeUA(ua);
