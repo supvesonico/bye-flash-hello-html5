@@ -14,7 +14,7 @@
 // @include     *://study.163.com/course/courseLearn*
 // @include     *://mooc.study.163.com/learn/*
 // @run-at      document-start
-// @version     1.6.3
+// @version     1.6.4
 // @grant       none
 // ==/UserScript==
 //'use strict';
@@ -66,10 +66,19 @@ if (location.host.indexOf('youku') >= 0) { //优酷youku
     }
     changeUA(ua);
 }
+if (location.href.search('open.163') >= 0) {//网易公开课
+    setTimeout(function () {
+        var v = ele('.video-wrapper video');
+        ele('body').style.backgroundColor = '#e4f0eb';
+        if (!!v === true) {//设置视频播放区域的高度
+            v.setAttribute('style', 'height:100%');
+        }
+    }, 2333);
+}
+
 window.onload = function () {
-    //显示控制条-网易云课堂和爱奇艺
     if (location.href.search('study.163') >= 0 || location.href.search('iqiyi.com') >= 0) {
-        var videoElement = document.querySelector('video'); //视频元素
+        var videoElement = ele('video'); //视频元素
         if (!!videoElement === true) {
             videoElement.setAttribute('controls', 'controls'); //显示播放控制条
             if (location.href.search('iqiyi.com') >= 0) {
