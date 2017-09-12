@@ -11,9 +11,10 @@
 // @include     *://v.qq.com/*
 // @include     *://*icourse163.org/*
 // @include     *://*open.163.com/movie*
-// @include     *://*study.163.com/course/*
+// @include     *://study.163.com/course/courseLearn*
+// @include     *://mooc.study.163.com/learn/*
 // @run-at      document-start
-// @version     1.6.2
+// @version     1.6.3
 // @grant       none
 // ==/UserScript==
 //'use strict';
