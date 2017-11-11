@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        bye-flash-hello-html5 | 再见flash 你好html5
 // @namespace   https://greasyfork.org/en/users/131965-levinit
 // @author      levinit
@@ -6,6 +6,7 @@
 // @include     *://*.le.com/*
 // @include     *://*.iqiyi.com/*html*
 // @include     *://v.qq.com/*
+// @include     *://y.qq.com/*
 // @include     *://*.cctv.com/*
 // @include     *://www.mgtv.com/*/*.html*
 // @include     *://zt.mgtv.com/act/*
@@ -18,7 +19,7 @@
 // @include     *://mooc.study.163.com/learn/*
 // @include     *://live.bilibili.com/*
 // @run-at      document-start
-// @version     1.7
+// @version     1.7.1
 // @grant       none
 // ==/UserScript==
 //'use strict';
@@ -59,8 +60,8 @@ if (isPhone) {  //移动ua的网站
     ua = 'Mozilla/5.0 (Linux; U; Android 4.0.4; GT-I9300 Build/IMM76D) AppleWebKit/601.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/601.1.46';
     changeUA(ua);
 } else {  //使用chrome、mac、safari等ua
-    if ((location.host === 'v.qq.com' || location.host === 'live.bilibil.com') && navigator.userAgent.indexOf('Edge') === -1) {
-        console.log('支持html5');  //Edge的腾讯视频和b站直播不支持html5
+    if ((location.host === 'v.qq.com' || location.host === 'y.qq.com' || location.host === 'live.bilibil.com') && navigator.userAgent.indexOf('Edge') === -1) {
+        console.log('支持html5');  //Edge的腾讯视频、QQ音乐MV和b站直播不支持html5
     } else if (location.href.indexOf('iqiyi') >= 0) {
         console.log('支持html5');
     } else if (location.host.indexOf('le.com') >= 0) {  //le.com对mac+safari情有独钟
